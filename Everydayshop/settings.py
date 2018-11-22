@@ -80,7 +80,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}  # 第三方登陆需要设置数据库引擎为innodb,不然会出错
     }
 }
 
