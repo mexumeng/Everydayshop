@@ -42,6 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'goods',
+    'trade',
+    'user_operation',
+    # 'xadmin',
+    'DjangoUeditor',
+    'crispy_forms',
+    'formtools'
+
 ]
 
 MIDDLEWARE = [
@@ -92,6 +100,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = 'users.UserProfile'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
