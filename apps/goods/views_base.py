@@ -33,8 +33,9 @@ class GoodsListView(View):
         通过serializers将goods直接序列化成json格式
         '''
         import json
-        from django.http import HttpResponse
+        from django.http import HttpResponse, JsonResponse
         json_data = serializers.serialize("json", goods)
-        return HttpResponse(json_data, content_type='application/json')
+        json_data = json.loads(json_data)
+        return JsonResponse(json_data,safe=False)
 
 
