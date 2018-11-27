@@ -15,7 +15,7 @@ class UserProfile(AbstractUser):
     username = models.CharField(max_length=20, blank=True, null=True,unique=True, verbose_name=u'名字')
     email = models.CharField(max_length=100, blank=True, null=True, verbose_name='电子邮箱')
     birthday = models.DateField(blank=True, null=True, verbose_name='生日')
-    gender = models.CharField(max_length=2, choices=GENDER_CHOICE, default='female', verbose_name=u'性别')
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICE, default='female', verbose_name=u'性别')
     mobile = models.CharField(max_length=11, verbose_name='手机号')
 
     class Meta:
@@ -40,5 +40,6 @@ class VerifyCode(models.Model):
 
     def __str__(self):
         return self.code
+
 
 
