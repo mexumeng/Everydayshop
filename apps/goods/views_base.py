@@ -15,11 +15,18 @@ class GoodsListView(View):
         '''
         json_list = []
         goods = Goods.objects.all()[:10]
+        # for good in goods:
+        #     json_dict = {}
+        #     json_dict['name'] = good.name
+        #     json_dict['category'] = good.category.name
+        #     json_dict['market_price'] = good.market_price
+        #     json_list.append(json_dict)
+        from django.forms.models import model_to_dict
+        """
+        通过model_to_dict将good所有的字段提取转化成dict类型,
+        问题是imgaeFiled和DateFIled无法序列化成json格式，下面用serialize替换此方法"""
         for good in goods:
-            json_dict = {}
-            json_dict['name'] = good.name
-            json_dict['category'] = good.category.name
-            json_dict['market_price'] = good.market_price
+            json_dict = model_to_dict(good)
             json_list.append(json_dict)
         import json
         from django.http import HttpResponse
