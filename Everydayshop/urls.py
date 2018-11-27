@@ -26,7 +26,7 @@ from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
-    path(r'^api-auth/', include('rest_framework.urls')),
+    path('api-auth/', include('rest_framework.urls')),
     path('ueditor', include('DjangoUeditor.urls')),
     # 处理图片显示的url,使用Django自带serve,传入参数告诉它去哪个路径找，我们有配置好的路径MEDIAROOT
     re_path('media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
