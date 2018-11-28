@@ -1,6 +1,4 @@
-# from django.shortcuts import render
 from .serializers import GoodsSerializer
-from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import viewsets
 from rest_framework import mixins

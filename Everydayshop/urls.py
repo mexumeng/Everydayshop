@@ -22,11 +22,12 @@ from .settings import MEDIA_ROOT
 # from goods.views_base import GoodsListView
 from goods.views import GoodsListViewSet
 from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
 
-goods_list = GoodsListViewSet.as_view({
-    'get': 'list',
-    # 'post': 'create'
-})
+
+router = DefaultRouter()
+# 商品列表页
+router.register(r'goods', viewset=GoodsListViewSet)
 
 
 urlpatterns = [
@@ -35,7 +36,6 @@ urlpatterns = [
     path('ueditor', include('DjangoUeditor.urls')),
     # 处理图片显示的url,使用Django自带serve,传入参数告诉它去哪个路径找，我们有配置好的路径MEDIAROOT
     re_path('media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
-    # 商品列表页
-    path('goods/', goods_list, name='goods'),
-    path('coreapi/', include_docs_urls(title="孟哥哥生鲜"))
+    path('coreapi/', include_docs_urls(title="孟哥哥生鲜")),
+    path('', include(router.urls)),
 ]
