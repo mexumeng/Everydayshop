@@ -27,7 +27,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 # 商品列表页
-router.register(r'goods', viewset=GoodsListViewSet)
+router.register(r'goods', viewset=GoodsListViewSet, base_name='goodslist',)
 
 
 urlpatterns = [
