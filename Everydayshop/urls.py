@@ -20,8 +20,13 @@ import xadmin, DjangoUeditor
 from .settings import MEDIA_ROOT
 
 # from goods.views_base import GoodsListView
-from goods.views import GoodsListView
+from goods.views import GoodsListViewSet
 from rest_framework.documentation import include_docs_urls
+
+goods_list = GoodsListViewSet.as_view({
+    'get': 'list',
+    # 'post': 'create'
+})
 
 
 urlpatterns = [
@@ -31,6 +36,6 @@ urlpatterns = [
     # 处理图片显示的url,使用Django自带serve,传入参数告诉它去哪个路径找，我们有配置好的路径MEDIAROOT
     re_path('media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
     # 商品列表页
-    path('goods/', GoodsListView.as_view(), name='goods'),
+    path('goods/', goods_list, name='goods'),
     path('coreapi/', include_docs_urls(title="孟哥哥生鲜"))
 ]
