@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django_filters',
     # 跨域请求
     'corsheaders',
+    # 用户注册登陆登出
     'rest_framework.authtoken'
 
 
@@ -150,21 +151,25 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# 全局设置分页
-# REST_FRAMEWORK = {
-#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-#     'PAGE_SIZE': 10
-# }
+# rest-framework全局设置
 REST_FRAMEWORK = {
+    # 分页设置
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'PAGE_SIZE': 10,
+    # 权限设置
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        # jwt配置
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+
     )
 }
 
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
-    '127.0.0.1:3000'
+    # '127.0.0.1:3000'
 )
 
