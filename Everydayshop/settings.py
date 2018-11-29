@@ -31,7 +31,7 @@ SECRET_KEY = '6!h&+!i-f=h6^4xu%m+)vv8ai7kjix6ada5buy!t3vfr-&fepi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -165,7 +165,7 @@ REST_FRAMEWORK = {
     # 权限设置
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
         # jwt配置
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
@@ -182,7 +182,7 @@ JWT_AUTH = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
-    # '127.0.0.1:3000'
+    '127.0.0.1:3000'
 )
 
 # 手机号码正则表达式

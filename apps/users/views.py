@@ -40,6 +40,7 @@ class CustomBackend(ModelBackend):
 class SysCodeViewSet(CreateModelMixin, viewsets.GenericViewSet):
 
     serializer_class = SmsSerializer
+
     def generate_code(self):
         """
         生成四位数字的验证码

@@ -21,7 +21,8 @@ from .settings import MEDIA_ROOT
 
 # from goods.views_base import GoodsListView
 from goods.views import GoodsListViewSet, CategoryViewSet
-from users.views import SysCodeViewSet, UserViewset
+from users.views import SysCodeViewSet,UserViewset
+from user_operation.views import UserFavViewset
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
@@ -34,6 +35,7 @@ router.register(r'goods', viewset=GoodsListViewSet, base_name='goods',)
 router.register(r'categorys', viewset=CategoryViewSet, base_name='categorys',)
 router.register(r'codes', SysCodeViewSet, base_name='codes',)
 router.register(r'users', UserViewset, base_name='users',)
+router.register(r'userfavs',UserFavViewset, base_name='userfavs')
 
 
 

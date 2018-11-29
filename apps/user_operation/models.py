@@ -19,7 +19,7 @@ class UserFav(models.Model):
         verbose_name = '用户收藏'
         verbose_name_plural = verbose_name
 
-        # 未知
+        # 联合user和goods为一个整体
         unique_together = ("user", "goods")
 
     def __str__(self):

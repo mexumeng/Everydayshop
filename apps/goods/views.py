@@ -11,9 +11,10 @@ from .filter import GoodsFilter
 
 
 class GoodsListPagination(PageNumberPagination):
-    '''
+    """
     定制分页
-    '''
+    """
+
     page_size = 12
     page_size_query_param = 'page_size'
     page_size_param = 'page'
@@ -38,7 +39,7 @@ class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewset
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
     pagination_class = GoodsListPagination
-    # 权限验证单个view接口
+    # 权限验证单个view接口,goods列表用不到，总不能让用户登陆之后才能看到商品列表吧
     # authentication_classes = (TokenAuthentication,)
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
     # filter_fields = ('name', 'shop_price')
