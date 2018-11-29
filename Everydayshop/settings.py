@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import sys
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +31,7 @@ SECRET_KEY = '6!h&+!i-f=h6^4xu%m+)vv8ai7kjix6ada5buy!t3vfr-&fepi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -142,6 +143,11 @@ USE_L10N = True
 USE_TZ = False
 
 
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
@@ -166,6 +172,12 @@ REST_FRAMEWORK = {
 
     )
 }
+# 与drf的jwt相关的设置
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+}
+
 
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -173,3 +185,7 @@ CORS_ORIGIN_WHITELIST = (
     # '127.0.0.1:3000'
 )
 
+# 手机号码正则表达式
+REGEX_MOBILE = "^1[358]\d{9}$|^147\d{8}$|^176\d{8}$"
+# 云片网设置
+APIKEY = 'apikey值'

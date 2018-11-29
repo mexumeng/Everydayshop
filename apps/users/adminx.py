@@ -13,7 +13,7 @@ class BaseSetting(object):
 
 
 class GlobalSettings(object):
-    site_title = "孟哥的商城"
+    site_title = "孟哥哥商城"
     site_footer = "shop@mengege.cn"
     # menu_style = "accordion"
 

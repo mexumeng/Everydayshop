@@ -31,9 +31,9 @@ class CategoryViewSet(mixins.ListModelMixin, viewsets.GenericViewSet, mixins.Ret
     serializer_class = CategorySerializer
 
 
-class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
-    商品列表,分页，搜索，过滤，排序
+    商品列表,分页，搜索，过滤，排序,详情
     """
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
