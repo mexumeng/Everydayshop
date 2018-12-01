@@ -22,7 +22,7 @@ from .settings import MEDIA_ROOT
 # from goods.views_base import GoodsListView
 from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SysCodeViewSet,UserViewset
-from user_operation.views import UserFavViewset
+from user_operation.views import UserFavViewset, UserLeavingMessageViewSet,UserAddressViewSet
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
@@ -31,11 +31,14 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 router = DefaultRouter()
 # 商品列表页
-router.register(r'goods', viewset=GoodsListViewSet, base_name='goods',)
-router.register(r'categorys', viewset=CategoryViewSet, base_name='categorys',)
-router.register(r'codes', SysCodeViewSet, base_name='codes',)
-router.register(r'users', UserViewset, base_name='users',)
-router.register(r'userfavs',UserFavViewset, base_name='userfavs')
+router.register('goods', viewset=GoodsListViewSet, base_name='goods',)
+router.register('categorys', viewset=CategoryViewSet, base_name='categorys',)
+router.register('codes', SysCodeViewSet, base_name='codes',)
+router.register('users', UserViewset, base_name='users',)
+router.register('userfavs',UserFavViewset, base_name='userfavs')
+router.register('messages',UserLeavingMessageViewSet, base_name='messages')
+router.register('address',UserAddressViewSet, base_name='address')
+
 
 
 
@@ -46,7 +49,7 @@ urlpatterns = [
     path('ueditor', include('DjangoUeditor.urls')),
     # 处理图片显示的url,使用Django自带serve,传入参数告诉它去哪个路径找，我们有配置好的路径MEDIAROOT
     re_path('media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
-    path('coreapi/', include_docs_urls(title="孟哥哥生鲜")),
+    path('docs/', include_docs_urls(title="孟哥哥商城文档")),
     # drf自带的权限认证
     path('api-token-auth/', views.obtain_auth_token),
     path('', include(router.urls)),

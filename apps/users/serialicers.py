@@ -91,4 +91,12 @@ class UserRegSerializer(serializers.ModelSerializer):
         fields = ("username", "code", "mobile", "password")
 
 
+class UserDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ("name", "birthday", "gender", "email", "mobile")
+
+
+
 
