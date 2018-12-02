@@ -2,7 +2,7 @@ __author__ = "xumeng"
 __date__ = "2018/11/27 16:26"
 
 from rest_framework import serializers
-from goods.models import Goods, GoodsCategory, GoodsImage
+from goods.models import Goods, GoodsCategory, GoodsImage, HotSearchWords, Banner
 
 
 class CategorySerializer3(serializers.ModelSerializer):
@@ -43,4 +43,16 @@ class GoodsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Goods
+        fields = "__all__"
+
+
+class HotSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HotSearchWords
+        fields = "__all__"
+
+
+class BannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Banner
         fields = "__all__"

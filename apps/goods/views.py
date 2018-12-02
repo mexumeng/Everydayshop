@@ -1,11 +1,11 @@
-from .serializers import GoodsSerializer, CategorySerializer
+from .serializers import GoodsSerializer, CategorySerializer, HotSearchSerializer, BannerSerializer
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import viewsets
 from rest_framework import mixins
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.authentication import TokenAuthentication
-from .models import Goods, GoodsCategory
+from .models import Goods, GoodsCategory, HotSearchWords, Banner
 from .filter import GoodsFilter
 # Create your views here.
 
@@ -61,5 +61,11 @@ class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewset
     #     return queryset
 
 
+class HotSearchViewSet(viewsets.ModelViewSet):
+    serializer_class = HotSearchSerializer
+    queryset = HotSearchWords.objects.all()
 
 
+class BannerViewSet(viewsets.ModelViewSet):
+    serializer_class = BannerSerializer
+    queryset = Banner.objects.all()

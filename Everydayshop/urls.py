@@ -20,9 +20,10 @@ import xadmin, DjangoUeditor
 from .settings import MEDIA_ROOT
 
 # from goods.views_base import GoodsListView
-from goods.views import GoodsListViewSet, CategoryViewSet
+from goods.views import GoodsListViewSet, CategoryViewSet, HotSearchViewSet, BannerViewSet
 from users.views import SysCodeViewSet,UserViewset
 from user_operation.views import UserFavViewset, UserLeavingMessageViewSet,UserAddressViewSet
+from trade.views import ShoppingCartViewSet,OrderViewSet
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
@@ -38,6 +39,10 @@ router.register('users', UserViewset, base_name='users',)
 router.register('userfavs',UserFavViewset, base_name='userfavs')
 router.register('messages',UserLeavingMessageViewSet, base_name='messages')
 router.register('address',UserAddressViewSet, base_name='address')
+router.register('shopcarts',ShoppingCartViewSet, base_name='shopcarts')
+router.register('orders',OrderViewSet, base_name='orders')
+router.register('hotsearchs',HotSearchViewSet, base_name='hotsearchs')
+router.register('banners',BannerViewSet, base_name='banners')
 
 
 
