@@ -1,9 +1,6 @@
 __author__ = "xumeng"
 __date__ = "2018/11/29 14:16"
 
-__author__ = 'mtianyan'
-__date__ = '2018/3/9 0009 09:29'
-
 # from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
